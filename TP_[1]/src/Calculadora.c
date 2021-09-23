@@ -56,7 +56,7 @@ int CalcularFactorial(float numeroIngresado, float *RFactorial) {
 
 	entero = numeroIngresado;
 
-	if (numeroIngresado - entero || numeroIngresado > 10) {
+	if (numeroIngresado - entero || numeroIngresado > 10 || numeroIngresado < 0) {
 
 		BanderaRetorno = 1;
 
