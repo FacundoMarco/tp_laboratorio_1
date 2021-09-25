@@ -101,12 +101,17 @@ int MenuOpciones(float numeroA, float numeroB, int banderaIngresoNumeros1,
 	return opcion;
 }
 
-float PedirFlotante(char mensaje[]) {
+float PedirFlotante(char mensaje[], char mensajeError[], int numeroMax, int numeroMin) {
 
 	float numero;
 	printf(mensaje);
-
 	scanf("%f", &numero);
+
+	while(numero > numeroMin || numero < numeroMax){
+		printf(mensajeError, numeroMin, numeroMax);
+		scanf("%f", &numero);
+
+	}
 
 	return numero;
 }

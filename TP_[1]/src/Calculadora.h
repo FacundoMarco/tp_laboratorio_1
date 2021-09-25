@@ -67,6 +67,6 @@ int MenuOpciones(float, float, int, int);
 /// @param error
 /// @param numeroFlotante
 /// @return
-float PedirFlotante(char mensaje[]);
+float PedirFlotante(char [], char [],int , int);
 
 #endif /* CALCULADORA_H_ */

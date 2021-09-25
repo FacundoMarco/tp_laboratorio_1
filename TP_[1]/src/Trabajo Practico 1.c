@@ -31,8 +31,8 @@
 
 
 #include "Calculadora.h"
-
-
+#define numeroMin -2000
+#define numeroMax 2000
 
 int main(void) {
 	setbuf(stdout, NULL);
@@ -66,14 +66,14 @@ int main(void) {
 		case 1:
 			banderaIngresoNumeros1 = 1;
 			banderaIngresado1 = 1;
-			numeroA = PedirFlotante("\n1. Ingresar 1er operando (A=x) : ");
+			numeroA = PedirFlotante("\n1. Ingresar 1er operando (A=x) : ", "\n1.Error Ingrese numero entre %d y %d, Ingresar 1er operando (A=x) : ",numeroMin, numeroMax);
 			printf("=====================================================\n");
 
 			break;
 		case 2:
 			banderaIngresoNumeros2 = 1;
 			banderaIngresado2 = 1;
-			numeroB = PedirFlotante("\n2. Ingresar 2do operando (B=y) : ");
+			numeroB = PedirFlotante("\n2. Ingresar 2do operando (B=y) : ", "\n2.Error Ingrese numero entre %d y %d, Ingresar 2do operando (B=x) : ",numeroMin, numeroMax);
 
 			printf("=====================================================\n");
 
