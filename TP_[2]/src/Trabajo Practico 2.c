@@ -29,6 +29,7 @@ int main(void) {
 	int banderaPrimerDato = 0;
 	int order;
 
+
 	Employee listaEmpleados[TAM]; //={{1,"Facu","Juarez",30000, 2 ,FALSE},{2,"Maty","Jimenez",35000, 3 ,FALSE},{3,"Nicolas","Quispe",40000, 4 ,FALSE}}
 
 	flagInicialisacionLista = InitEmployees(listaEmpleados, TAM);
@@ -50,16 +51,18 @@ int main(void) {
 		printf("=====================================================\n");
 		printf("=====================================================\n");
 
-		opcion = PedirEntero("Ingrese la opcion: ");
+		utn_getNumero(&opcion,"INGRESE UNA OPCION: ", "ERROR, OPCION INVALIDA.\n ",
+				0, 6, 9999);
 
 		switch (opcion) {
 		case 1:
 			banderaPrimerDato = 1;
 			idAux++;
-			PedirString("Ingrese Nombre:  ", nameAux);
-			PedirString("Ingrese Apellido:  ", lastNameAux);
-			salaryAux = PedirFloat("Ingrese el Salario:   ");
-			sectorAux = PedirEntero("Ingrese Sector:   ");
+			utn_getNombre(nameAux, 51, "INGRESE NOMBRE: ", "ERROR, INGRESE NOMBRE NUEVAMENTE. \n", 1000);
+			utn_getNombre(lastNameAux, 51, "INGRESE APELLIDO: ", "ERROR, INGRESE APELLIDO NUEVAMENTE. \n", 1000);
+			utn_getNumeroFlotante(&salaryAux, "INGRESE SALARIO: ", "ERROR, INGRESE SALARIO NUEVAMENTE.\n", 0, 999999, 1000);
+			utn_getNumero(&sectorAux , "INGRESE SECTOR: ", "ERROR, INGRESE SECTOR NUEVAMENTE.\n", 0, 100, 1000);
+
 
 			flagAddEmpleados = AddEmployee(listaEmpleados, TAM, idAux, nameAux,
 					lastNameAux, salaryAux, sectorAux);
@@ -78,8 +81,8 @@ int main(void) {
 								printf("NO HAY EMPLEADOS CARGADOS\n");
 							}
 
-							modificarPorId = PedirEntero(
-									"Ingrese ID del empleado a modificar:  ");
+							utn_getNumero(&modificarPorId,"INGRESE ID DEL EMPLEADO  MODIFCIAR: ", "ERROR, INGRESE ID DEL EMPLEADO NUEVAMENTE.\n",
+									0, 6, 9999);
 							banderaModificarId = ModifyEmployee(listaEmpleados, TAM,
 									modificarPorId);
 							if (banderaModificarId == 0) {
@@ -100,8 +103,8 @@ int main(void) {
 							if (flagMostrarLista == 1) {
 								printf("NO HAY EMPLEADOS CARGADOS\n");
 							}
-							idEmpleadoBaja = PedirEntero(
-									"Ingrese ID de Empleado a dar de BAJA:  ");
+							utn_getNumero(&idEmpleadoBaja,"INGRESE ID DEL EMPLEADO A DAR DE BAJA: ", "ERROR, INGRESE ID DEL EMPLEADO A DAR DE BAJA NUEVAMENTE.\n",
+									0, 6, 9999);
 							empleadoBuscado = FindEmployeeById(listaEmpleados, TAM,
 									idEmpleadoBaja);
 							if (empleadoBuscado == 1) {
@@ -142,12 +145,12 @@ int main(void) {
 					if (flagMostrarLista == 1) {
 						printf("NO SE PUDO MOSTRAR LA LISTA CORRECTAMENTE\n");
 					}
-					opcion = PedirEntero("Ingrese Opcion : ");
+					utn_getNumero(&opcion,"INGRESE UNA OPCION: ", "ERROR, OPCION INVALIDA.\n",
+									0, 4, 9999);
 					switch (opcion) {
 					case 1:
-						order =
-								PedirEntero(
-										"Ingrese 0 para Descendente y 1 para Ascendente: ");
+						utn_getNumero(&order,"INGRESE 1 PARA ORDENENAR LISTA DE FORMA ASCENDENTE o 0 PARA FORMA DESCENDENTE: ", "ERROR, OPCION INVALIDA.\n",
+								-1, 2, 9999);
 						SortEmployees(listaEmpleados, TAM, order);
 						flagMostrarLista = PrintEmployees(listaEmpleados, TAM);
 						if (flagMostrarLista == 1) {

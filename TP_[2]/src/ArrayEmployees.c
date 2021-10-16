@@ -135,32 +135,34 @@ int ModifyEmployee(Employee listaEmpleados[], int tam, int id) {
 						"=====================================================\n");
 				printf(
 						"=====================================================\n");
-				opcion = PedirEntero("INGRESE UNA OPCION: ");
+				utn_getNumero(&opcion,"INGRESE UNA OPCION: ", "ERROR, OPCION INVALIDA.\n",
+								0, 6, 9999);
 				flagModificar = 1;
 
 				switch (opcion) {
 				case 1:
-					PedirString("Ingrese Nombre a Modificar :  ",
-							listaEmpleados[i].name);
+
+					utn_getNombre(listaEmpleados[i].name , 51,"INGRESE NOMBRE A MODIFICAR: ", "ERROR, INGRESE NOMBRE A MODIFICAR NUEVAMENTE.\n", 1000);
+
 					break;
 				case 2:
-					PedirString("Ingrese Apellido a Modificar :  ",
-							listaEmpleados[i].lastName);
+					utn_getNombre(listaEmpleados[i].lastName , 51,"INGRESE APELLIDO A MODIFICAR: ", "ERROR, INGRESE APELLIDO A MODIFICAR NUEVAMENTE.\n", 1000);
+
 					break;
 				case 3:
-					listaEmpleados[i].sector = PedirEntero(
-							"Ingrese sector a modificar : ");
+
+					utn_getNumero(&listaEmpleados[i].sector,"INGRESE SECTOR A MODIFICAR: ", "ERROR, INGRESE SECTOR A MODIFICAR NUEVAMENTE.\n",
+													0, 100, 9999);
+
 					break;
 				case 4:
-					listaEmpleados[i].salary = PedirFloat(
-							"Ingrese salario a modificar : ");
+					utn_getNumeroFlotante(&listaEmpleados[i].salary, "INGRESE SALARIO A MODIFICAR: ", "ERROR, A MODIFICAR EL SALARIO NUEVAMENTE. \n", 0, 999999, 1000);
+
 					break;
 				case 5:
 					printf("MODIFICACIONES EXITOSAS. \n");
 					break;
-				default:
-					printf("INGRESE OPCION VALIDA.\n");
-					break;
+
 				}
 			} while (opcion != 5);
 
@@ -218,6 +220,9 @@ int SortEmployees(Employee listaEmpleados[], int tam, int order) {
 					listaEmpleados[j] = auxiliar;
 					retorno = 1;
 				}
+				break;
+			default:
+				printf("OPCION INVALIDA.\n");
 				break;
 			}
 
